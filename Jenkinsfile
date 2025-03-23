@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Shreyraut12/StudentProject.git'
+                git 'https://github.com/SRCEM-AIML/C25_ShreyaRaut_Assignment2.git'
             }
         }
         stage('Build Docker Image') {
