@@ -2,30 +2,38 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'shreyaraut12/studentproject'  // Docker image name (must be lowercase)
-        DOCKER_CREDENTIALS = 'docker-hub-credentials' // Ensure this exists in Jenkins credentials
+        // Docker image name (use your Docker Hub username and project name)
+        DOCKER_IMAGE = 'shreyaraut12/studentproject' 
+        
+        // Docker Hub credentials ID stored in Jenkins
+        DOCKER_CREDENTIALS = 'docker-hub-credentials' 
     }
 
     stages {
+        // Clone the repository from GitHub
         stage('Clone Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/SRCEM-AIML/C25_ShreyaRaut_Assignment2.git'
             }
         }
 
+        // Build the Docker image from the Dockerfile
         stage('Build Docker Image') {
             steps {
                 script {
+                    // Build the Docker image with the name stored in DOCKER_IMAGE
                     dockerImage = docker.build("${DOCKER_IMAGE}")
                 }
             }
         }
 
+        // Push the built Docker image to Docker Hub
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS) {
-                        dockerImage.push('latest')
+                    // Use the docker.withRegistry step to log in to Docker Hub with credentials and push the image
+                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_CREDENTIALS}") {
+                        dockerImage.push('latest')  // Push the image with the 'latest' tag
                     }
                 }
             }
@@ -34,11 +42,14 @@ pipeline {
 
     post {
         success {
+            // If the pipeline succeeds
             echo '✅ Build and push successful!'
         }
         failure {
+            // If the pipeline fails
             echo '❌ Build or push failed. Check the logs!'
         }
     }
 }
+
 
