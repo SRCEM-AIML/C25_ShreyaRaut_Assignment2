@@ -36,7 +36,6 @@ Copy
 Edit
 docker build -t shreyaraut12/studentproject .  
 docker run -p 8000:8000 shreyaraut12/studentproject  
-Now, open http://127.0.0.1:8000/ in your browser.
 
 📦 Pull from Docker Hub
 Instead of building manually, you can pull the prebuilt image:
@@ -64,7 +63,6 @@ Jenkins will automatically pull, build, and deploy the latest version.
 
 🔗 Important Links
 GitHub Repository: C25_ShreyaRaut_Assignment2
-
 Docker Hub Image: shreyaraut12/studentproject
 
 📌 Conclusion
