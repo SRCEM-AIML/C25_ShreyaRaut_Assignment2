@@ -26,7 +26,13 @@ pipeline {
                 }
             }
         }
-
+stage('Test Docker') {
+    steps {
+        script {
+            sh 'docker --version'  // This will check if Docker is accessible
+        }
+    }
+}
         // Push the built Docker image to Docker Hub
         stage('Push to Docker Hub') {
             steps {
