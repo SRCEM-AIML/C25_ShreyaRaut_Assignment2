@@ -1,6 +1,6 @@
 Student Project – Multi-App Django Application
 Overview
-This is a Django-based multi-app project demonstrating:
+This is a Django-based multi-app project.
 
 Framework: Django
 
@@ -10,45 +10,51 @@ Automation: Jenkins
 
 Deployment: Docker Hub
 
-📁 Project Structure
-graphql
-Copy
-Edit
-StudentProject/   # Main Django project
-│── app1/         # Contains the homepage
-│── app2/         # Contains a sample page
-│── templates/    # Global templates for UI
-│── static/       # Contains CSS for styling
-│── Dockerfile    # Defines the Docker container
-│── Jenkinsfile   # Automates the CI/CD pipeline
-🚀 How to Run the Project Locally
-1️⃣ Clone the Repository
-bash
-Copy
-Edit
-git clone https://github.com/SRCEM-AIML/C25_ShreyaRaut_Assignment2.git  
-cd C25_ShreyaRaut_Assignment2  
-2️⃣ Run Using Docker
-If you want to run the project inside a Docker container, use:
+Project Structure
+StudentProject/ - Main Django project folder
 
-bash
-Copy
-Edit
-docker build -t shreyaraut12/studentproject .  
-docker run -p 8000:8000 shreyaraut12/studentproject  
+app1/ - Contains the homepage
 
-📦 Pull from Docker Hub
+app2/ - Contains a sample page
+
+templates/ - Global templates for UI
+
+static/ - Contains CSS for styling
+
+Dockerfile - Defines how the project runs inside a container
+
+Jenkinsfile - Automates the CI/CD pipeline
+
+How to Run the Project Locally
+1. Clone the Repository
+Open a terminal and run the following command:
+git clone https://github.com/SRCEM-AIML/C25_ShreyaRaut_Assignment2.git
+
+Navigate into the project folder:
+cd C25_ShreyaRaut_Assignment2
+
+2. Run Using Docker
+If you want to run the project inside a Docker container, follow these steps:
+
+Build the Docker image:
+docker build -t shreyaraut12/studentproject .
+
+Run the container:
+docker run -p 8000:8000 shreyaraut12/studentproject
+
+Pull from Docker Hub
 Instead of building manually, you can pull the prebuilt image:
 
-bash
-Copy
-Edit
-docker pull shreyaraut12/studentproject:latest  
-docker run -p 8000:8000 shreyaraut12/studentproject  
-Your project will now be accessible at http://127.0.0.1:8000/.
+Pull the image from Docker Hub:
+docker pull shreyaraut12/studentproject:latest
 
-⚙️ Jenkins CI/CD Pipeline
-The Jenkins pipeline automates:
+Run the container:
+docker run -p 8000:8000 shreyaraut12/studentproject
+
+Your project will now be live on http://127.0.0.1:8000/.
+
+Jenkins CI/CD Pipeline
+The Jenkins pipeline automates the following steps:
 
 Pulling code from GitHub
 
@@ -56,16 +62,14 @@ Building a Docker image
 
 Pushing it to Docker Hub
 
-🛠 How to Trigger the Pipeline?
-Make any changes to the project and push them to GitHub.
+To trigger the pipeline, push any changes to GitHub, and Jenkins will handle the deployment automatically.
 
-Jenkins will automatically pull, build, and deploy the latest version.
-
-🔗 Important Links
+Important Links
 GitHub Repository: C25_ShreyaRaut_Assignment2
+
 Docker Hub Image: shreyaraut12/studentproject
 
-📌 Conclusion
-This project demonstrates a fully automated CI/CD pipeline with Django, Docker, and Jenkins, ensuring efficient deployment using best DevOps practices.
+Conclusion
+This project demonstrates a full CI/CD pipeline with Django, Docker, and Jenkins. It ensures that every code change is automatically built, tested, and deployed using best DevOps practices.
 
 
