@@ -1,26 +1,31 @@
 pipeline {
     agent any
-    
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/SRCEM-AIML/C25_ShreyaRaut_Assignment2.git'
+                git branch: 'main', url: 'https://github.com/SRCEM-AIML/C25_ShreyaRaut_Assignment2.git'
             }
         }
-        
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t shreyaraut12/studentproject .'
+                    try {
+                        bat 'docker build -t shreyaraut12/studentproject .'
+                    } catch (Exception e) {
+                        error "Docker build failed: ${e}"
+                    }
                 }
             }
         }
-        
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'Studentproject') {
-                        sh 'docker push shreyaraut12/studentproject'
+                    try {
+                        withDockerRegistry(credentialsId: 'docker-hub-credentials') {
+                            bat 'docker push shreyaraut12/studentproject'
+                        }
+                    } catch (Exception e) {
+                        error "Docker push failed: ${e}"
                     }
                 }
             }
