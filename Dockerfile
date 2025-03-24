@@ -13,5 +13,5 @@ RUN pip install django
 # Expose port 8000 for the application
 EXPOSE 8000
 
-# Define the command to run the app
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Correct CMD instruction (fixing syntax)
+CMD ["python", "StudentProject/manage.py", "runserver", "0.0.0.0:8000", "--noreload"]
